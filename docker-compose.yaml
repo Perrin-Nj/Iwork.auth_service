@@ -1,0 +1,18 @@
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: iwork_user
+      MONGO_INITDB_ROOT_PASSWORD: iwork_pass
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8084:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: iwork_user
+      ME_CONFIG_MONGODB_ADMINPASSWORD: iwork_pass
+      ME_CONFIG_MONGODB_URL: mongodb://iwork_user:iwork_pass@mongo:27017/

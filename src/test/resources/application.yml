@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: auth-service
+  data:
+    mongodb:
+      uri: ${DB_URI}
+      authentication-database: ${DB_AUTH_USER}
+      database: ${DB_NAME}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+      port: ${DB_PORT}
+      host: ${DB_HOST}
+      auto-index-creation: true

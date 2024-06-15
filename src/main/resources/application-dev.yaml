@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: auth-service
+    thread-executor: virtual
+    liquibase:
+      enabled: false
+      change-log: classpath:liquibase/changelog.xml
+
+#---------------Database Configs-------------------------------
+  data:
+    mongodb:
+      uri: ${DB_URI}
+      authentication-database: ${DB_AUTH_USER}
+      database: ${DB_NAME}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+      port: ${DB_PORT}
+      host: ${DB_HOST}
+      auto-index-creation: true
+      repositories:
+        enabled: true
+    logging:
+      level:
+        org:
+          springframework:
+            data:
+              mongodb:
+                core:
+                  MongoTemplate: ${LOG_LEVEL}
+  jpa:
+    generate-ddl: true
+    ddl-auto: update
+
+#--------------------Actuator Configs-------------------------------
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, env, info, scheduledtasks, sessions
+  health:
+    show-details: always
+  info:
+    enabled: true
+    env:
+      enabled: true
+info:
+  app:
+    name: Iwork Authentication Service
+    description: Manage Authentication of users within the Iwork platform
+    version: 1.0.0
+    author: Perrin Njietche
+    docs: http://google.com #TODO: Setup Iwork OpenAPI-Swagger for authentication service
+    license: Apache License 2.0
+
